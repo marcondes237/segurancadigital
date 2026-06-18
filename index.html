@@ -4,34 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerador de senha</title>
+    <title>Gerador de Senhas</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <section class="conteudo">
-        <div class="conteudo-titulo">
-            <img src="unlock.svg" alt="cadeado fechado">
-            <h2 class="titulo-principal">Gerador de senhas</h2>
-            <h3 class="titulo-secundario">Gere instantaneamente uma senha aleatória e segura</h3>
-        </div>
-        <div class="conteudo-senha">
-            <label for="senha">Senha</label>
-            <input name="senha" type="text" id="campo-senha">
-        </div>
-        <div class="parametro">
-            <h3 class="parametro-titulo">Personalize sua senha</h3>
-            <div class="parametro-coluna__senha">
-                <div class="parametro-senha">
-                    <h4 class="parametro-senha__titulo">Número de caracteres</h4>
-                </div>                
-                <div class="parametro-senha">
-                    <h4 class="parametro-senha__titulo">Características da senha</h4>
-                </div>
-                <div class="parametro-senha">
-                    <h4 class="parametro-senha__titulo">Força da senha</h4>
-                </div>
-            </div>
-        </div>
-    </section>
+
+<section class="conteudo">
+
+    <div class="conteudo-titulo">
+
+        <!-- 🔐 CADEADO (AGORA SIM SIMPLES E GARANTIDO) -->
+        <div class="icone-cadeado">🔐</div>
+
+        <h2 class="titulo-principal">Gerador de Senhas</h2>
+        <p class="titulo-secundario">Senha segura e aleatória</p>
+
+    </div>
+
+    <div class="conteudo-senha">
+        <input type="text" id="campo-senha" readonly>
+        <button onclick="gerarSenha()">Gerar senha</button>
+    </div>
+
+    <div class="parametro">
+
+        <h3>Personalização</h3>
+
+        <p>Tamanho: <span id="numero-senha">12</span></p>
+        <input type="range" id="tamanho" min="6" max="32" value="12">
+
+        <br><br>
+
+        <label><input type="checkbox" class="checkbox" checked> Maiúsculas</label><br>
+        <label><input type="checkbox" class="checkbox" checked> Minúsculas</label><br>
+        <label><input type="checkbox" class="checkbox" checked> Números</label><br>
+        <label><input type="checkbox" class="checkbox" checked> Símbolos</label>
+
+        <div class="forca"></div>
+        <div class="entropia"></div>
+
+    </div>
+
+</section>
+
+<!-- ⚠️ IMPORTANTE: main.js -->
+<script src="main.js"></script>
+
 </body>
+</html>
