@@ -1,110 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
-
-:root{
-    --branco: #ffffff;
-    --cor-de-fundo: #120022;
-    --fundo-senha: #1c0033;
-    --fundo-texto: #16002a;
-    --borda: #a855f7;
-    --destaque: #c084fc;
-
-    --roboto: 'Roboto', sans-serif;
-    --roboto-mono: 'Roboto Mono', monospace;
-}
-
 body{
-    margin: 0;
-    background: var(--cor-de-fundo);
-    color: var(--branco);
-    font-family: var(--roboto);
+    margin:0;
+    background:#120022;
+    color:white;
+    font-family: Arial;
+    text-align:center;
 }
 
-.conteudo{
-    max-width: 1000px;
-    margin: auto;
-    padding: 30px;
-    text-align: center;
-}
-
-/* 🔐 cadeado */
 .icone-cadeado{
-    margin-bottom: 10px;
-    filter: drop-shadow(0 0 12px #a855f7);
-}
-
-.titulo-principal{
-    font-family: var(--roboto-mono);
-    color: var(--destaque);
-    font-size: 32px;
-}
-
-.titulo-secundario{
-    color: #e9d5ff;
+    font-size:60px;
+    margin-top:20px;
+    filter: drop-shadow(0 0 10px #a855f7);
 }
 
 .conteudo-senha{
-    margin-top: 40px;
-    background: var(--fundo-senha);
-    padding: 20px;
-    border-bottom: 5px solid var(--borda);
-    border-radius: 10px;
+    margin-top:20px;
 }
 
 #campo-senha{
-    width: 100%;
-    font-size: 28px;
-    padding: 10px;
-    margin-top: 10px;
-    border: none;
-    background: transparent;
-    color: var(--destaque);
-    font-family: var(--roboto-mono);
+    width:80%;
+    font-size:22px;
+    padding:10px;
 }
 
 button{
-    margin-top: 15px;
-    background: var(--borda);
-    border: none;
-    padding: 10px 20px;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
+    margin-top:10px;
+    padding:10px 20px;
+    background:#a855f7;
+    border:none;
+    color:white;
+    cursor:pointer;
 }
 
-button:hover{
-    background: var(--destaque);
+.forca{
+    height:10px;
+    margin-top:10px;
+    background:#333;
 }
 
-.parametro{
-    margin-top: 30px;
-    background: var(--fundo-texto);
-    padding: 20px;
-    border: 2px solid var(--borda);
-    border-radius: 10px;
-}
-
-.parametro-coluna__senha{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.parametro-senha{
-    background: #1a0030;
-    padding: 15px;
-    border-radius: 8px;
-}
-
-.parametro-senha__titulo{
-    color: #e9d5ff;
-    margin-bottom: 10px;
-}
-
-@media (min-width: 768px){
-    .parametro-coluna__senha{
-        flex-direction: row;
-        justify-content: space-around;
-    }
-}
+.forca.fraca{ background:red; }
+.forca.media{ background:orange; }
+.forca.forte{ background:lime; }
