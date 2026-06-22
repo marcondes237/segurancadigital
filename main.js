@@ -1,65 +1,77 @@
-const senha = document.getElementById("senha");
-const tamanho = document.getElementById("tamanho");
-const valorTamanho = document.getElementById("valorTamanho");
-const barra = document.getElementById("forca");
-const texto = document.getElementById("textoForca");
+const numeroSenha = document.querySelector('.parametro-senha__texto');
+let tamanhoSenha = 12;
+numeroSenha.textContent = tamanhoSenha;
+const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVXYWZ';
+const letrasMinusculas = 'abcdefghijklmnopqrstuvxywz';
+const numeros = '0123456789';
+const simbolos = '!@%*?';
+const botoes = document.querySelectorAll('.parametro-senha__botao');
+const campoSenha = document.querySelector('#campo-senha');
+const checkbox = document.querySelectorAll('.checkbox');
+const forcaSenha = document.querySelector('.forca');
 
-tamanho.addEventListener("input",()=>{
-    valorTamanho.textContent=tamanho.value;
-});
+botoes[0].onclick = diminuiTamanho;
+botoes[1].onclick = aumentaTamanho;
 
-function gerarSenha(){
-
-    let chars="abcdefghijklmnopqrstuvwxyz";
-
-    if(document.getElementById("maiusculas").checked){
-        chars+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+function diminuiTamanho() {
+    if (tamanhoSenha > 1) {
+        // tamanhoSenha = tamanhoSenha-1;
+        tamanhoSenha--;
     }
-
-    if(document.getElementById("numeros").checked){
-        chars+="0123456789";
+    numeroSenha.textContent = tamanhoSenha;
+    geraSenha();
+}
+function aumentaTamanho() {
+    if (tamanhoSenha < 20) {
+        // tamanhoSenha = tamanhoSenha+1;
+        tamanhoSenha++;
     }
-
-    if(document.getElementById("simbolos").checked){
-        chars+="!@#$%&*?";
-    }
-
-    let novaSenha="";
-
-    for(let i=0;i<tamanho.value;i++){
-        novaSenha+=chars.charAt(
-            Math.floor(Math.random()*chars.length)
-        );
-    }
-
-    senha.value=novaSenha;
-    verificarForca(novaSenha);
+    numeroSenha.textContent = tamanhoSenha;
+    geraSenha();
 }
 
-function verificarForca(senha){
-
-    let pontos=0;
-
-    if(senha.length>=8) pontos++;
-    if(/[A-Z]/.test(senha)) pontos++;
-    if(/[0-9]/.test(senha)) pontos++;
-    if(/[!@#$%&*?]/.test(senha)) pontos++;
-
-    if(pontos<=2){
-        barra.style.width="30%";
-        barra.style.background="#ef4444";
-        texto.textContent="Senha Fraca";
-    }
-    else if(pontos===3){
-        barra.style.width="70%";
-        barra.style.background="#facc15";
-        texto.textContent="Senha Média";
-    }
-    else{
-        barra.style.width="100%";
-        barra.style.background="#22c55e";
-        texto.textContent="Senha Forte";
-    }
+for (i = 0; i < checkbox.length; i++) {
+    checkbox[i].onclick = geraSenha;
 }
 
-gerarSenha();
+geraSenha();
+
+function geraSenha() {
+    let alfabeto = '';
+    if (checkbox[0].checked) {
+        alfabeto = alfabeto + letrasMaiusculas;
+    }
+    if (checkbox[1].checked) {
+        alfabeto = alfabeto + letrasMinusculas;
+    }
+    if (checkbox[2].checked) {
+        alfabeto = alfabeto + numeros;
+    }
+    if (checkbox[3].checked) {
+        alfabeto = alfabeto + simbolos;
+    }
+    let senha = '';
+    for (let i = 0; i < tamanhoSenha; i++) {
+        let numeroAleatorio = Math.random() * alfabeto.length;
+        numeroAleatorio = Math.floor(numeroAleatorio);
+        senha = senha + alfabeto[numeroAleatorio];
+    }
+    campoSenha.value = senha;
+    classificaSenha(alfabeto.length);
+
+}
+
+function classificaSenha(tamanhoAlfabeto){
+    let entropia = tamanhoSenha * Math.log2(tamanhoAlfabeto);
+    console.log(entropia);
+    forcaSenha.classList.remove('fraca','media','forte');
+    if (entropia > 57){
+        forcaSenha.classList.add('forte');
+    } else if (entropia > 35 && entropia < 57 ) {
+        forcaSenha.classList.add('media');
+    } else if (entropia <= 35){
+        forcaSenha.classList.add('fraca');
+    }
+    const valorEntropia = document.querySelector('.entropia');
+    valorEntropia.textContent = "Um computador pode levar até " + Math.floor(2**entropia/(100e6*60*60*24)) + " dias para descobrir essa senha.";
+}
