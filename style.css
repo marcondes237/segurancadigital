@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
 
 :root{
-    --branco: white;
-    --cor-de-fundo: #B22222;
-    --fundo-senha: #87CEFA;
-    --fundo-texto: #001E40;
-    --borda: #0075FF;
+    --branco: #ffffff;
+    --cor-de-fundo: #0a192f;       /* Azul escuro profundo para o fundo do site */
+    --fundo-senha: #172a45;        /* Azul intermediário para o bloco da senha */
+    --fundo-texto: #112240;        /* Azul escuro para os blocos de parâmetros */
+    --borda: #0075FF;              /* Mantido o azul vivo para destacar as bordas */
     --roboto: 'Roboto', sans-serif;
     --roboto-mono: 'Roboto Mono', monospace;
 }
@@ -150,36 +150,35 @@ label{
         flex-direction: row;
     }
     .footer {
-    background-color: #1e1e2e;
-    color: #a8a8b3;
-    text-align: center;
-    padding: 25px 20px;
-    margin-top: 40px;
-    border-top: 1px solid #3a3a4d;
-    font-size: 0.9rem;
-}
+        background-color: #0b1424; /* Azul bem escuro para o rodapé */
+        color: #8892b0;           /* Texto cinza azulado suave */
+        text-align: center;
+        padding: 25px 20px;
+        margin-top: 40px;
+        border-top: 1px solid #172a45;
+        font-size: 0.9rem;
+    }
 
-.footer .container {
-    max-width: 800px;
-    margin: 0 auto;
-}
+    .footer .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
 
-.footer strong {
-    color: #fff;
-}
+    .footer strong {
+        color: #fff;
+    }
 
-.footer-links {
-    margin-top: 12px;
-}
+    .footer-links {
+        margin-top: 12px;
+    }
 
-.footer-links a {
-    color: #7b7b9b;
-    text-decoration: none;
-    transition: color 0.3s;
-}
+    .footer-links a {
+        color: #64ffda;           /* Tom de ciano/azul piscina para os links */
+        text-decoration: none;
+        transition: color 0.3s;
+    }
 
-.footer-links a:hover {
-    color: #00ff88;
-}
-    
+    .footer-links a:hover {
+        color: var(--borda);       /* Transição para o azul principal ao passar o mouse */
+    }
 }
